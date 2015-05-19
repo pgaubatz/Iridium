@@ -16,6 +16,16 @@ import _IDDirector = require('./lib/cacheControllers/IDDirector');
 
 export = Iridium;
 
+/**
+ * Iridium is not a MongoDB ORM, it's something else entirely.
+ * @description
+ * Iridium is a MongoDB framework built around the idea that you don't need an
+ * ORM like Mongoose to use MongoDB effectively within Node.js. Instead, we believe
+ * that your "ORM" should focus on performance and developer experience rather
+ * than trying to re-implement what the MongoDB client driver does already.
+ * @module iridium
+ * @namespace Iridium
+ */
 module Iridium {
     export class Core extends _Core { }
     export class Model<TDocument extends { _id?: any }, TInstance> extends _Model<TDocument, TInstance> { }
@@ -23,7 +33,7 @@ module Iridium {
 
     export class NoOpCache extends _NoOpCache { }
     export class MemoryCache extends _MemoryCache { }
-
+    
     export class CacheOnID extends _IDDirector { }
 
     export interface Configuration extends _Configuration { }

@@ -11,10 +11,27 @@ import Bluebird = require('bluebird');
 export = ModelHandlers;
 
 class ModelHandlers<TDocument extends { _id?: any }, TInstance> {
+    /**
+     * Creates a new set of workflow handlers for the given Iridium model
+     * @constructs Iridium.ModelHandlers
+     * @param {Iridium.Model} model The model to which these workflow handlers should be bound
+     * @memberof Iridium
+     * @property {Iridium.Model} model The model to which these workflow handlers are bound
+     */
     constructor(public model: Model<TDocument, TInstance>) {
 
     }
 
+    /**
+     * Performs operations relating to the intake of a document, including triggering of
+     * the relevant hooks and wrapping of the document using the model's wrapping function.
+     * @param {Any} conditions The conditions that were used when requesting the document, or null if this is the result of a creation request.
+     * @param {Object} result The document returned by the database
+     * @param {function(document, isNew, isPartial)} wrapper A function which will be used to wrap the document
+     * @param {?QueryOptions} options The options controlling how the processing of this document is conducted
+     * @returns {Promise<Any>}
+     * @public
+     */
     documentReceived<TResult>(conditions: any,
         result: TDocument,
         wrapper: (document: TDocument, isNew?: boolean, isPartial?: boolean) => TResult,

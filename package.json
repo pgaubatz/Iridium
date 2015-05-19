@@ -21,7 +21,8 @@
     "coverage": "grunt coverage",
     "lint": "jshint lib/",
     "benchmark": "node ./benchmarks/mongodb.js",
-    "build": "grunt build"
+    "build": "grunt build",
+    "docs": "doxx -s lib -T doc -t Iridium"
   },
   "typescript": {
     "definition": "iridium.d.ts"
@@ -41,16 +42,19 @@
     "chai-fuzzy": "^1.5.0",
     "codeclimate-test-reporter": "~0.0.4",
     "coveralls": "^2.11.2",
+    "doxx": "^1.2.6",
     "dts-generator": "^1.4.1",
     "grunt": "~0.4.5",
     "grunt-cli": "~0.1.13",
     "grunt-contrib-clean": "~0.6.0",
+    "grunt-jsdoc": "^0.5.8",
     "grunt-mocha-cli": "^1.13.0",
     "grunt-mocha-istanbul": "^2.4.0",
     "grunt-release": "^0.12.0",
     "grunt-string-replace": "^1.2.0",
     "grunt-ts": "^4.1.0",
     "istanbul": "~0.3.13",
+    "jsdoc": "^3.3.0",
     "jshint": "^2.7.0",
     "mocha": "^2.2.4",
     "tick": "~0.1.1",

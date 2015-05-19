@@ -11,21 +11,24 @@ module.exports = function (grunt) {
 				src: tsconfig.files,
 				options: {
 					watch: 'lib',
-					fast: 'never'
+					fast: 'never',
+					comments: true
 				}
 			},
 			test: {
 				src: tsconfig.files,
 				options: {
 					sourceMap: true,
-					fast: 'never'
+					fast: 'never',
+					comments: true
 				}
 			},
 			release: {
-				src: ["lib/**/*.ts"],
+				src: ["index.ts", "lib/**/*.ts"],
 				options: {
 					sourceMap: false,
-					fast: 'never'
+					fast: 'never',
+					comments: true
 				}
 			}
 		},
@@ -73,7 +76,8 @@ module.exports = function (grunt) {
 			definitions: ["*.d.ts", "!iridium.d.ts", "!_references.d.ts", "benchmarks/**/*.d.ts", "example/**/*.d.ts", "lib/**/*.d.ts", "test/**/*.d.ts"],
 			sourceMaps: ["*.map", "benchmarks/**/*.map", "example/**/*.map", "lib/**/*.map", "test/**/*.map"],
 			compiledFiles: ["*.js", "!Gruntfile.js", "benchmarks/**/*.js", "example/**/*.js", "lib/**/*.js", "test/**/*.js"],
-			coverage: ["coverage"]
+			coverage: ["coverage"],
+			doc: ["doc/**/*", "!doc/**/*.md", "!doc/jsdoc.conf.json"]
 		},
 
 		_release: {
@@ -102,6 +106,17 @@ module.exports = function (grunt) {
 					}]
 				}
 			}
+		},
+		
+		jsdoc: {
+			lib: {
+				src: ["README.md", "index.js", "lib/**/*.js"],
+				options: {
+					destination: "doc",
+					template : "node_modules/grunt-jsdoc/node_modules/ink-docstrap/template",
+					configure : "doc/jsdoc.conf.json"
+				}
+			}
 		}
 	});
     
@@ -118,6 +133,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks("grunt-contrib-clean");
 	grunt.loadNpmTasks("grunt-release");
 	grunt.loadNpmTasks("grunt-string-replace");
+	grunt.loadNpmTasks("grunt-jsdoc");
 	
 	grunt.renameTask('release', '_release');
 	
@@ -126,6 +142,7 @@ module.exports = function (grunt) {
 	grunt.registerTask("coverage", ["clean", "ts:test", "mocha_istanbul:coverage"]);
 	grunt.registerTask("coveralls", ["clean", "ts:test", "mocha_istanbul:coveralls"]);
 	grunt.registerTask("build", ["clean", "ts:release"]);
+	grunt.registerTask("doc", ["clean", "ts:release", "jsdoc:lib"]);
 	grunt.registerTask("build:package", ["clean", "ts:release", "string-replace:packageDependencies"]);
 	grunt.registerTask("clean:package", ["string-replace:developmentDependencies"]);
 	

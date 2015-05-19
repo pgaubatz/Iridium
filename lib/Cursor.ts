@@ -13,7 +13,9 @@ class Cursor<TDocument extends { _id?: any }, TInstance> {
      * @param {Model} model The Iridium model that this cursor belongs to
      * @param {Object} conditions The conditions that resulte in this cursor being created
      * @param {MongoDB.Cursor} cursor The MongoDB native cursor object to be wrapped
-     * @constructor
+     * @private
+     * @constructs Iridium.Cursor
+     * @memberof Iridium
      */
     constructor(private model: Model<TDocument, TInstance>, private conditions: any, public cursor: MongoDB.Cursor) {
 

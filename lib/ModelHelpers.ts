@@ -10,6 +10,13 @@ import Bluebird = require('bluebird');
 export = ModelHelpers;
 
 class ModelHelpers<TDocument extends { _id?: any }, TInstance> {
+    /**
+     * Creates a new set of helper methods for the given model
+     * @constructs Iridium.ModelHelpers
+     * @param {Iridium.Model} model The model to which these helper methods should be bound
+     * @property {Iridium.Model} model The model for which these helper methods are being created
+     * @memberof Iridium
+     */
     constructor(public model: Model<TDocument, TInstance>) {
         this._validator = new Skmatc(model.schema);
     }
