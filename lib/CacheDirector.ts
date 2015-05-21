@@ -1,7 +1,7 @@
 /// <reference path="../_references.d.ts" />
-export = ICacheDirector;
+export = CacheDirector;
 
-interface ICacheDirector {
+interface CacheDirector {
     valid<T>(object: T): boolean;
     buildKey<T>(object: T): string;
 

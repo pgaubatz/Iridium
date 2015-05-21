@@ -18,13 +18,17 @@ export = Iridium;
 
 /**
  * Iridium is not a MongoDB ORM, it's something else entirely.
- * @description
+ * 
+ * ## What is Iridium then?
  * Iridium is a MongoDB framework built around the idea that you don't need an
  * ORM like Mongoose to use MongoDB effectively within Node.js. Instead, we believe
  * that your "ORM" should focus on performance and developer experience rather
  * than trying to re-implement what the MongoDB client driver does already.
- * @module iridium
- * @namespace Iridium
+ * 
+ * Our primary goal when creating Iridium was to provide you with the tools you
+ * needed to write code correctly the first time round, while simplifying most
+ * of the common tasks you would encounter and offering some "free" performance
+ * boosts where ever possible.
  */
 module Iridium {
     export class Core extends _Core { }

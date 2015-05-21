@@ -1,10 +1,10 @@
 /// <reference path="../../_references.d.ts" />
-import cacheDirector = require('../CacheDirector');
+import Iridium = require('../../index');
 import MongoDB = require('mongodb');
 
 export = IDCacheDirector;
 
-class IDCacheDirector implements cacheDirector{
+class IDCacheDirector implements Iridium.CacheDirector{
     valid(object: { _id: any }) {
         return !!object._id;
     }

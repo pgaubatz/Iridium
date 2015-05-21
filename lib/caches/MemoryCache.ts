@@ -1,10 +1,10 @@
 /// <reference path="../../_references.d.ts" />
 import Bluebird = require('bluebird');
-import cache = require('../Cache');
+import Iridium = require('../../index');
 
 export = MemoryCache;
 
-class MemoryCache implements cache {
+class MemoryCache implements Iridium.Cache {
     private cache: any = {};
 
     set<T>(key: string, value: T): Bluebird<T> {
